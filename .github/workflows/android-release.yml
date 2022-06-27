@@ -30,15 +30,7 @@ jobs:
     # Get flutter dependencies.
     - run: flutter pub get
       working-directory: ./apps/auth-challenge-zog/
-    
-    # Check for any formatting issues in the code.
-    - run: flutter format --set-exit-if-changed .
-      working-directory: ./apps/auth-challenge-zog/
-    
-    # Statically analyze the Dart code for any errors.
-    - run: flutter analyze .
-      working-directory: ./apps/auth-challenge-zog/
-    
+
     # Run widget tests for flutter project.
     - run: flutter test test/authentication_test.dart
       working-directory: ./apps/auth-challenge-zog/
