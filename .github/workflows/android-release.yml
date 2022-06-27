@@ -7,7 +7,7 @@ on:
     branches:
     - main
     tags:
-      - "internal-v*.*.*" # on every version tag will build a new android artifact example: v3.1.2+6
+      - "*" # on every version tag will build a new android artifact example: v3.1.2+6
     
 # on: push    # Default will running for every branch.
     
@@ -50,6 +50,7 @@ jobs:
       with:
         artifacts: "./apps/auth-challenge-zog/build/app/outputs/apk/release/*.apk,build/app/outputs/bundle/release/app-release.aab"
         token: ${{ secrets.GH_TOKEN }}
+        fetch-depth: 0
 
     
     # Upload generated apk to the artifacts.
