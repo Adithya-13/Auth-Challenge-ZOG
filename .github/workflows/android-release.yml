@@ -6,7 +6,7 @@ on:
   push:
     branches:
     - main
-
+    
 # on: push    # Default will running for every branch.
     
 jobs:
@@ -36,11 +36,7 @@ jobs:
       working-directory: ./apps/auth-challenge-zog/
 
     # Build apk.
-    - run: flutter build apk --release --split-per-abi
-      working-directory: ./apps/auth-challenge-zog/
-  
-    # Build AppBundlw
-    - run: flutter build appbundle
+    - run: flutter build apk
       working-directory: ./apps/auth-challenge-zog/
     
     # Upload generated apk to the artifacts.
@@ -48,3 +44,6 @@ jobs:
       with:
         name: release-apk
         path: ./apps/auth-challenge-zog/build/app/outputs/apk/release/app-release.apk
+        token: ${{ secrets.GH_TOKEN }}
+        tag: ${{ steps.version.outputs.content }}
+        commit: ${{ github.sha }}
